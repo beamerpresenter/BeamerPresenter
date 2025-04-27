@@ -16,7 +16,7 @@ arch=('x86_64')
 url="https://github.com/stiglers-eponym/BeamerPresenter"
 license=('AGPL3' 'GPL3')
 makedepends=('cmake' 'ninja' "qt${_qt_version_major}-tools")
-depends=("qt${_qt_version_major}-multimedia>=${_qt_min_version}" "qt${_qt_version_major}-multimedia<${_qt_max_version}" "qt${_qt_version_major}-svg>=${_qt_min_version}" "qt${_qt_version_major}-svg<${_qt_max_version}" 'jbig2dec>=0.19' 'openjpeg2>=2.4.0' 'gumbo-parser>=0.10.0' 'libmupdf>=1.23.3-4')
+depends=("qt${_qt_version_major}-multimedia>=${_qt_min_version}" "qt${_qt_version_major}-multimedia<${_qt_max_version}" "qt${_qt_version_major}-svg>=${_qt_min_version}" "qt${_qt_version_major}-svg<${_qt_max_version}" 'libmupdf>=1.23.3-4')
 provides=("beamerpresenter=${pkgver}")
 conflicts=('beamerpresenter')
 backup=('etc/xdg/beamerpresenter/beamerpresenter.conf' 'etc/xdg/beamerpresenter/gui.json')
@@ -40,9 +40,10 @@ build() {
         -DUSE_MUPDF=ON \
         -DUSE_QTPDF=OFF \
         -DUSE_EXTERNAL_RENDERER=OFF \
-        -DLINK_MUJS=OFF \
+        -DMUPDF_USE_SYSTEM_LIBS=OFF \
         -DLINK_MUPDF_THIRD=OFF \
-        -DLINK_GUMBO=ON \
+        -DLINK_MUJS=OFF \
+        -DLINK_GUMBO=OFF \
         -DUSE_TRANSLATIONS=ON \
         -DINSTALL_LICENSE=OFF \
         -DQT_VERSION_MAJOR="${_qt_version_major}" \

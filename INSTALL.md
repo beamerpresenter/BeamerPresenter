@@ -38,7 +38,7 @@ When installing BeamerPresenter you need to choose a PDF engine from MuPDF, Popp
 
 
 ## Requirements
-Building is currently tested in Arch Linux, Ubuntu 24.04, 22.04, 20.04 and 24.10, Fedora 41, and MinGW-w64 in MSYS2 (Windows).
+Building is currently tested in Arch Linux, Ubuntu 24.04, 22.04, 20.04 and 25.04 (only Qt 6), Fedora 41, and MinGW-w64 in MSYS2 (Windows).
 
 In order to compile BeamerPresenter you need to have CMake, zlib and Qt 5/6 including the multimedia and SVG modules installed.
 For translations you also need the linguist tools.
@@ -67,11 +67,11 @@ When compiling with MuPDF:
 * `libjpeg-dev`
 * `libopenjp2-7-dev`
 * `libjbig2dec0-dev`
-* only Ubuntu ≥21.10: `libmujs-dev`
-* only Ubuntu ≥22.04: `libgumbo-dev`
+* only Ubuntu 21.10 - 24.10: `libmujs-dev`
+* only Ubuntu 22.04 - 24.10: `libgumbo-dev`
 
 When compiling with Qt PDF:
-* `qtpdf5-dev` (Qt 5) or `qtpdf6-dev` (Qt 6) or `qt6-pdf-dev` (Qt 6, Ubuntu 24.10)
+* `qtpdf5-dev` (Qt 5) or `qtpdf6-dev` (Qt 6, Ubuntu <24.10) or `qt6-pdf-dev` (Qt 6, Ubuntu ≥24.10)
 
 ### Dependencies in Arch Linux/Manjaro/Endeavour
 Replace qt6 with qt5 in all package names if you want to use Qt 5.
@@ -85,12 +85,9 @@ When compiling with Poppler:
 * `poppler-qt6`
 
 When compiling with MuPDF:
-* `libmupdf` (tested versions: 1.16.1 – 1.25.4)
-* `jbig2dec`
-* `openjpeg2`
-* `gumbo-parser`
+* `libmupdf`
 
-Optional, for showing videos:
+Optional, for showing videos in Qt 5:
 * `gst-libav`
 * `gst-plugins-good`
 
@@ -173,12 +170,14 @@ Other options are added in the form `-DOPTION=VALUE` as listed below.
 | `SUPPRESS_MUPDF_WARNINGS` | OFF | suppress warnings of MuPDF while loading a document (only Unix-like systems) |
 
 #### Linker options and technical details
+These options are mainly provided for Linux distributions in which MuPDF is statically linked, but uses dynamically linked libraries. When dynamically linking to MuPDF (as in Arch or Ubuntu 25.04), simply set `MUPDF_USE_SYSTEM_LIBS=OFF` and `LINK_MUPDF_THIRD=OFF`.
+
 | Option | Value | Explanation |
 | ------ | ----- | ----------- |
-| `MUPDF_USE_SYSTEM_LIBS` | ON | MuPDF uses system libraries (default in common Linux distributions) |
-| `LINK_MUJS` | OFF | link to MuJS, set ON in Ubuntu ≥21.10 |
-| `LINK_MUPDF_THIRD` | ON | set OFF when libmupdf-third is not available (Ubuntu 21.10 and Arch Linux) |
-| `LINK_GUMBO` | ON | set ON when using MuPDF >= 1.18 with shared system libraries |
+| `MUPDF_USE_SYSTEM_LIBS` | ON | Explicitly link some libraries required by MuPDF, often necessary if MuPDF is provided as static library. Set to OFF on Arch Linux and Ubuntu ≥25.04. |
+| `LINK_MUPDF_THIRD` | ON | set OFF when libmupdf-third is not available (Ubuntu 21.10 and ≥25.04, Arch Linux) |
+| `LINK_MUJS` | OFF | link to MuJS, set ON in Ubuntu 21.10 to 24.10 |
+| `LINK_GUMBO` | ON | set ON when using MuPDF >= 1.18 as static library with shared system libraries |
 | `LINK_TESSERACT` | OFF | set ON when using MuPDF in Fedora |
 
 #### Options only affecting the installation

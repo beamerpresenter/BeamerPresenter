@@ -13,7 +13,7 @@ This software uses the Qt framework and the PDF engine MuPDF or Poppler.
 * videos and slide transitions
 * (optionally) rich text notes for the speaker
 * (optionally) show separate presentation file for speaker or use LaTeX-beamer's option to show notes on second screen
-* timer indicates progress relative to a predefined schedule by it's color
+* timer indicates progress relative to a predefined schedule by its color
 * navigate using document outline, thumbnail slides, page numbers/labels and links
 
 ## Screenshots
