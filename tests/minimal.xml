@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xournal creator="beamerpresenter 0.2.4-beta1-894.3f0615e">
-<title>BeamerPresenter document, compatible with Xournal++ - see https://github.com/stiglers-eponym/BeamerPresenter</title>
+<title>BeamerPresenter document, compatible with Xournal++ - see https://github.com/beamerpresenter/BeamerPresenter</title>
 <beamerpresenter duration="0:03:00">
 <documents>
 <file alias="notes" path="minimal.pdf"/>

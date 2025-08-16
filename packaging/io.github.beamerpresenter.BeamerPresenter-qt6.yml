@@ -1,7 +1,7 @@
-app-id: io.github.stiglers_eponym.BeamerPresenter
+app-id: io.github.beamerpresenter.BeamerPresenter
 branch: master
 runtime: org.kde.Platform
-runtime-version: 5.15-24.08
+runtime-version: "6.8"
 sdk: org.kde.Sdk
 command: beamerpresenter
 build-options:
@@ -16,7 +16,7 @@ finish-args:
   - "--filesystem=xdg-public-share"
   - "--filesystem=xdg-desktop"
   - "--filesystem=xdg-config/beamerpresenter"
-  - "--own-name=io.github.stiglers_eponym.BeamerPresenter"
+  - "--own-name=io.github.beamerpresenter.BeamerPresenter"
 modules:
   - name: poppler
     buildsystem: cmake-ninja
@@ -28,8 +28,8 @@ modules:
     - "-DENABLE_BOOST=OFF"
     - "-DENABLE_UTILS=OFF"
     - "-DENABLE_LIBCURL=OFF"
-    - "-DENABLE_QT5=ON"
-    - "-DENABLE_QT6=OFF"
+    - "-DENABLE_QT5=OFF"
+    - "-DENABLE_QT6=ON"
     - "-DENABLE_GLIB=OFF"
     - "-DENABLE_GOBJECT_INTROSPECTION=OFF"
     - "-DENABLE_GTK_DOC=OFF"
@@ -38,20 +38,20 @@ modules:
     - "/bin"
     sources:
     - type: archive
-      url: https://poppler.freedesktop.org/poppler-25.02.0.tar.xz
-      sha256: 21234cb2a9647d73c752ce4031e65a79d11a511a835f2798284c2497b8701dee
+      url: https://poppler.freedesktop.org/poppler-25.08.0.tar.xz
+      sha256: 425ed4d4515a093bdcdbbaac6876f20617451edc710df6a4fd6c45dd67eb418d
   - name: beamerpresenter
     buildsystem: cmake-ninja
     config-opts:
-    - "-DQT_VERSION_MAJOR=5"
-    - "-DQT_VERSION_MINOR=15"
+    - "-DQT_VERSION_MAJOR=6"
+    - "-DQT_VERSION_MINOR=8"
     - "-DUSE_POPPLER=ON"
     - "-DUSE_MUPDF=OFF"
     - "-DUSE_QTPDF=OFF"
     - "-DUSE_EXTERNAL_RENDERER=OFF"
     - "-DUSE_TRANSLATIONS=ON"
     - "-DGIT_VERSION=ON"
-    - "-DAPPID_NAME=io.github.stiglers_eponym.BeamerPresenter"
+    - "-DAPPID_NAME=io.github.beamerpresenter.BeamerPresenter"
     - "-DINSTALL_METAINFO=ON"
     - "-DCMAKE_BUILD_TYPE=Release"
     - "-DCMAKE_INSTALL_PREFIX=/app"
@@ -61,5 +61,5 @@ modules:
     - "-DCMAKE_INSTALL_INCLUDEDIR=/app/include"
     sources:
     - type: git
-      url: https://github.com/stiglers-eponym/BeamerPresenter.git
+      url: https://github.com/beamerpresenter/BeamerPresenter.git
       branch: main

@@ -21,7 +21,7 @@ jobs:
       uses: bilelmoussaoui/flatpak-github-actions/flatpak-builder@v6
       with:
         bundle: BeamerPresenter.flatpak
-        manifest-path: packaging/io.github.stiglers_eponym.BeamerPresenter-qt5.yml
+        manifest-path: packaging/io.github.beamerpresenter.BeamerPresenter-qt5.yml
         arch: x86_64
         cache-key: flatpak-builder-${{ github.sha }}
 

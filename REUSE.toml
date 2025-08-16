@@ -1,7 +1,7 @@
 version = 1
 SPDX-PackageName = "BeamerPresenter"
 SPDX-PackageSupplier = "Valentin Bruch <software@vbruch.eu>"
-SPDX-PackageDownloadLocation = "https://github.com/stiglers-eponym/BeamerPresenter"
+SPDX-PackageDownloadLocation = "https://github.com/beamerpresenter/BeamerPresenter"
 
 [[annotations]]
 path = ["*.md", ".readme/**"]

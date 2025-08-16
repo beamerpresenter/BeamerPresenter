@@ -32,7 +32,7 @@ sudo apt install --no-install-recommends libmujs-dev libgumbo-dev
 sudo apt install --no-install-recommends qt6-multimedia-dev libqt6opengl6-dev libgl1-mesa-dev qt6-tools-dev qt6-tools-dev-tools qt6-l10n-tools
 ```
 
-For version 0.2.6, the source can be [downloaded here](https://github.com/stiglers-eponym/BeamerPresenter/archive/refs/tags/v0.2.6.tar.gz).
+For version 0.2.6, the source can be [downloaded here](https://github.com/beamerpresenter/BeamerPresenter/archive/refs/tags/v0.2.6.tar.gz).
 Check and unpack the download:
 ```sh
 sha256sum -c - <<< "ed6b397ea4ec0afdf7a9bf8f3db272ae9999fab1d485a29b9f9b82615472b1fd v0.2.6.tar.gz"

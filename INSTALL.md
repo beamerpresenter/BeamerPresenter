@@ -1,10 +1,9 @@
 # Installing BeamerPresenter
 There exist different flavors of BeamerPresenter:
-You can choose the PDF engine (Poppler, MuPDF, Qt PDF) and the major Qt version (5 or 6), see [below](#choosing-mupdf-or-poppler).
-It is recommended to use Qt 6 (if available) because of noticable improvements when including videos in a presentation.
+Choose the major Qt version (6 by default, 5 for legacy support) and the PDF engine (Poppler, MuPDF, Qt PDF), see [below](#choosing-mupdf-or-poppler).
 
 BeamerPresenter can be found in the official [Nix repositories](https://search.nixos.org/packages?channel=unstable&type=packages&query=BeamerPresenter) and in the [AUR](https://aur.archlinux.org/packages/beamerpresenter) (also as a [mainline version](https://aur.archlinux.org/packages/beamerpresenter-git)).
-The [releases](https://github.com/stiglers-eponym/BeamerPresenter/releases) include packages for Arch/Manjaro/Endeavour, Ubuntu (24.04, 22.04 and 20.04), and flatpak.
+The [releases](https://github.com/beamerpresenter/BeamerPresenter/releases) include packages for Arch/Manjaro/Endeavour, Ubuntu (24.04, 22.04 and 20.04), and flatpak.
 These packages can be installed as shown in the following example, which uses Poppler as PDF engine (after downloading the corresponding file):
 ```sh
 # Ubuntu 24.04:
@@ -16,7 +15,7 @@ sudo apt install ./beamerpresenter-poppler-0.2.6-qt5-focal-x86_64.deb
 # Arch/Manjaro/Endeavour
 sudo pacman -U beamerpresenter-poppler-qt6-0.2.6-1-x86_64.pkg.tar.zst
 # Flatpak
-flatpak install org.kde.Platform/x86_64/6.5 # can be skipped if already installed
+flatpak install org.kde.Platform/x86_64/6.8 # can be skipped if already installed
 flatpak install BeamerPresenter-Qt6.flatpak
 ```
 Verify the signature of the checksums in `SHA256SUMS`:
@@ -124,14 +123,14 @@ When using QtPDF:
 ### Download
 Download the sources:
 ```sh
-wget https://github.com/stiglers-eponym/BeamerPresenter/archive/v0.2.6.tar.gz
+wget https://github.com/beamerpresenter/BeamerPresenter/archive/v0.2.6.tar.gz
 sha256sum -c - <<< "ed6b397ea4ec0afdf7a9bf8f3db272ae9999fab1d485a29b9f9b82615472b1fd v0.2.6.tar.gz"
 tar -xf v0.2.6.tar.gz
 cd BeamerPresenter-0.2.6
 ```
 Alternatively, you can clone the git repository
 ```sh
-git clone --depth 1 --single-branch https://github.com/stiglers-eponym/BeamerPresenter.git
+git clone --depth 1 --single-branch https://github.com/beamerpresenter/BeamerPresenter.git
 cd BeamerPresenter
 ```
 

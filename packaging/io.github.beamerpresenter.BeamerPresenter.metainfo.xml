@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <component type="desktop">
-  <id>io.github.stiglers_eponym.BeamerPresenter</id>
+  <id>io.github.beamerpresenter.BeamerPresenter</id>
   <name>BeamerPresenter</name>
   <project_license>GPL-3.0</project_license>
   <metadata_license>CC0-1.0</metadata_license>
   <developer_name>Valentin Bruch</developer_name>
   <summary>Show PDF presentation with extra information for the speaker.</summary>
-  <url type="homepage">https://github.com/stiglers-eponym/BeamerPresenter</url>
+  <url type="homepage">https://github.com/beamerpresenter/BeamerPresenter</url>
   <update_contact>software@vbruch.eu</update_contact>
   <description>
     <p>BeamerPresenter shows a PDF presentation to speaker and audience in a
@@ -31,16 +31,16 @@
   </categories>
   <screenshots>
     <screenshot type="default">
-      <image>https://raw.githubusercontent.com/stiglers-eponym/BeamerPresenter/main/.readme/fusion-1920px.webp</image>
+      <image>https://raw.githubusercontent.com/beamerpresenter/BeamerPresenter/main/.readme/fusion-1920px.webp</image>
     </screenshot>
     <screenshot>
-      <image>https://raw.githubusercontent.com/stiglers-eponym/BeamerPresenter/main/.readme/widgets-1920px.webp</image>
+      <image>https://raw.githubusercontent.com/beamerpresenter/BeamerPresenter/main/.readme/widgets-1920px.webp</image>
     </screenshot>
     <screenshot>
-      <image>https://raw.githubusercontent.com/stiglers-eponym/BeamerPresenter/main/.readme/interactive-1920px.webp</image>
+      <image>https://raw.githubusercontent.com/beamerpresenter/BeamerPresenter/main/.readme/interactive-1920px.webp</image>
     </screenshot>
     <screenshot>
-      <image>https://raw.githubusercontent.com/stiglers-eponym/BeamerPresenter/main/.readme/video-1920px.webp</image>
+      <image>https://raw.githubusercontent.com/beamerpresenter/BeamerPresenter/main/.readme/video-1920px.webp</image>
     </screenshot>
   </screenshots>
   <releases>
@@ -54,6 +54,6 @@
     <release version="0.1.2" date="2020-07-13"/>
     <release version="0.1.1" date="2020-03-01"/>
   </releases>
-  <launchable type="desktop-id">io.github.stiglers-eponym.BeamerPresenter.desktop</launchable>
+  <launchable type="desktop-id">io.github.beamerpresenter.BeamerPresenter.desktop</launchable>
   <content_rating type="oars-1.0" />
 </component>

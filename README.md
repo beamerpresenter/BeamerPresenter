@@ -51,7 +51,7 @@ It is recommended to use Qt 6 (if available) and Poppler or MuPDF.
 More details can be found in the [installation manual](INSTALL.md).
 
 BeamerPresenter can be found in the [Nix repositories](https://search.nixos.org/packages?channel=unstable&type=packages&query=BeamerPresenter) and [in the AUR](https://aur.archlinux.org/packages/beamerpresenter) (for Arch/Manjaro/Endeavour, also as a [mainline version](https://aur.archlinux.org/packages/beamerpresenter-git)).
-The [releases](https://github.com/stiglers-eponym/BeamerPresenter/releases) come with packages for Arch/Manjaro/Endeavour, Ubuntu 24.04 / 22.04 / 20.04, and flatpak.
+The [releases](https://github.com/beamerpresenter/BeamerPresenter/releases) come with packages for Arch/Manjaro/Endeavour, Ubuntu 24.04 / 22.04 / 20.04, and flatpak.
 For example, the commands for installing BeamerPresenter with Poppler as PDF engine after downloading the corresponding file are:
 ```sh
 # Ubuntu 24.04:
@@ -63,8 +63,8 @@ sudo apt install ./beamerpresenter-poppler-0.2.6-qt5-focal-x86_64.deb
 # Arch/Manjaro:
 sudo pacman -U beamerpresenter-poppler-qt5-0.2.6-1-x86_64.pkg.tar.zst
 # Flatpak:
-flatpak install org.kde.Platform/x86_64/5.15-21.08 # can be skipped if already installed
-flatpak install beamerpresenter-qt5.flatpak
+flatpak install org.kde.Platform/x86_64/6.8 # can be skipped if already installed
+flatpak install BeamerPresenter-Qt6.flatpak
 ```
 The build process for these packages is explained [here](packaging).
 Verify the signature of the checksums in `SHA256SUMS`:
@@ -105,14 +105,13 @@ command line option `-g <file>`.
 
 ## Bugs and known problems
 If you find bugs or have suggestions for improvements, please
-[open an issue](https://github.com/stiglers-eponym/BeamerPresenter/issues).
+[open an issue](https://github.com/beamerpresenter/BeamerPresenter/issues).
 
 When reporting bugs, please include the version string of BeamerPresenter
 (`beamerpresenter --version`).
 
 The following known problems have low priority. If one of these problems is relevant for you, please also open an issue.
 * Multimedia
-    * Some bugs in the Qt 5 version are fixed when using Qt 6. For example, this affects media that are embedded in the PDF document.
     * In Arch Linux the media player regularly hangs up when using qt6-multimedia-gstreamer. With qt6-multimedia-ffmpeg it should work.
     * Sounds included as sound link (not sound annotation) are unsupported when using MuPDF (this affects LaTeX beamer's `\sound` command; workaround: use `\movie` instead).
 * Changing tool buttons via the user interface is non-permanent. Permanent changes in the user interface require manual changes in the JSON-formatted configuration file.

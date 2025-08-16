@@ -8,9 +8,9 @@
  *
  * \section link_sec Links
  *
- * * [BeamerPresenter on GitHub](https://github.io/stiglers-eponym/BeamerPresenter)
- * * [Qt 6 documentation](https://doc.qt.io/qt-6) for class QSomeClassName: https://doc.qt.io/qt-6/qsomeclassname.html
- * * [Qt 5 documentation](https://doc.qt.io/qt-5) for class QSomeClassName: https://doc.qt.io/qt-5/qsomeclassname.html
+ * * [BeamerPresenter on GitHub](https://github.com/beamerpresenter/BeamerPresenter)
+ * * [Qt 6 documentation](https://doc.qt.io/qt-6)
+ * * [Qt 5 documentation](https://doc.qt.io/qt-5)
  * * [poppler qt6 documentation](https://poppler.freedesktop.org/api/qt6)
  * * [poppler qt5 documentation](https://poppler.freedesktop.org/api/qt5)
  * * [MuPDF source](https://github.com/ArtifexSoftware/mupdf)

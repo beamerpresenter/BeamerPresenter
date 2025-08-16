@@ -13,7 +13,7 @@ pkgver='0.2.6'
 pkgrel=1
 pkgdesc="Modular multi-screen pdf presenter (using Poppler)"
 arch=('x86_64')
-url="https://github.com/stiglers-eponym/BeamerPresenter"
+url="https://github.com/beamerpresenter/BeamerPresenter"
 license=('GPL3')
 makedepends=('cmake' 'ninja' "qt${_qt_version_major}-tools")
 depends=("qt${_qt_version_major}-multimedia>=${_qt_min_version}" "qt${_qt_version_major}-multimedia<${_qt_max_version}" "qt${_qt_version_major}-svg>=${_qt_min_version}" "qt${_qt_version_major}-svg<${_qt_max_version}" "poppler-qt${_qt_version_major}")
