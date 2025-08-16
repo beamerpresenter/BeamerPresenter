@@ -25,6 +25,8 @@ if (USE_MUPDF)
     # these must be added here.
     if (MUPDF_USE_SYSTEM_LIBS)
         list(APPEND EXTRA_LIBS
+                    brotlienc
+                    brotlidec
                     freetype
                     harfbuzz
                     jpeg

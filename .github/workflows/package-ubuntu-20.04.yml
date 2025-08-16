@@ -23,6 +23,7 @@ jobs:
       run: >
         sudo apt-get update -y;
         sudo apt-get install -y --no-install-recommends
+        g++-10
         cmake
         lunzip
         zlib1g-dev
@@ -38,6 +39,7 @@ jobs:
         qtmultimedia5-dev
         qttools5-dev
         libpoppler-qt5-dev
+        libbrotli-dev
 
 
     - name: Configure with Qt5 + Poppler
@@ -122,11 +124,13 @@ jobs:
       run : |
         cd "mupdf-${{ env.MUPDF_VERSION }}-source"
         rm -rf thirdparty/{freeglut,freetype,harfbuzz,jbig2dec,libjpeg,openjpeg,zlib}
+        CC=$(which gcc-10)
+        CXX=$(which g++-10)
         CFLAGS+=' -fPIC -ffat-lto-objects'
         CXXFLAGS+=' -fPIC'
         USE_SYSTEM_LIBS='yes'
         XCFLAGS+=' -DTOFU -DTOFU_CJK -DTOFU_SIL -DFZ_ENABLE_JS=0'
-        export CFLAGS CXXFLAGS USE_SYSTEM_LIBS XCFLAGS
+        export CFLAGS CXXFLAGS USE_SYSTEM_LIBS XCFLAGS CC CXX
         make build=release libs
 
 
