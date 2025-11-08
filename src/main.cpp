@@ -81,6 +81,10 @@ int main(int argc, char *argv[])
       {{"t", "time"},
        QCoreApplication::translate("main", "timer total time in minutes"),
        QCoreApplication::translate("main", "number")});
+  parser.addOption({"pdfpc",
+                    QCoreApplication::translate(
+                        "main", "pdfpc JSON file for notes and overlays"),
+                    QCoreApplication::translate("main", "file")});
   parser.addOption(
       {"log", QCoreApplication::translate(
                   "main", "log slide changes to standard output")});
@@ -185,6 +189,10 @@ int main(int argc, char *argv[])
   master()->distributeMemory();
   QObject::connect(preferences(), &Preferences::distributeMemory, master(),
                    &Master::distributeMemory);
+  // Read pdfpc JSON file.
+  if (parser.isSet("pdfpc") ||
+      preferences()->global_flags & Preferences::AutoloadPdfpc)
+    master()->loadPdfpcJSON(parser.value("pdfpc"));
   // Run the program.
   int status = 0;
   if (!parser.isSet("test")) status = app.exec();

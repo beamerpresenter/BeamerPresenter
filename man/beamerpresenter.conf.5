@@ -1,4 +1,4 @@
-.TH beamerpresenter.conf 5 "2024-12-25" "0.2.6"
+.TH beamerpresenter.conf 5 "2025-11-08" "0.2.6"
 .
 .SH NAME
 beamerpresenter.conf \- configuration file for BeamerPresenter
@@ -78,6 +78,9 @@ Open external links using default programs (e.g. browser) and load remote resour
 .BR "search highlight color " "= #6428643b"
 Color (#AARRGGBB) used to highlight search results. This should include transparency, because it is drawn on top of the search results.
 .
+.TP
+.BR "autoload pdfpc" "= false"
+When opening \[dq]file.pdf\[dq], always load \[dq]file.pdfpc\[dq] if that file exists.
 .
 .TP
 .BR "debug " "= flag1,flag2,..."

@@ -280,6 +280,8 @@ QWidget *Master::createWidget(
               Qt::DirectConnection);
       connect(this, &Master::readNotes, nwidget, &NotesWidget::readNotes,
               Qt::DirectConnection);
+      connect(this, &Master::sendPageNote, nwidget, &NotesWidget::setPageNote,
+              Qt::DirectConnection);
       connect(nwidget, &NotesWidget::saveDrawings, this, &Master::saveDrawings);
       // TODO: reload initiated from notes widget
       connect(nwidget, &NotesWidget::loadDrawings, this,
@@ -1545,6 +1547,12 @@ void Master::loadPdfpcJSON(const QString &filename)
 {
   if (documents.isEmpty() || !documents.first()) return;
   QFile file(filename);
+  if (filename.isEmpty()) {
+    // Special case: empty filename, used for autoload of pdfpc files.
+    // Guess filename and return without warning if that file does not exist.
+    file.setFileName(documents.constFirst()->getFilename() + "pc");
+    if (!file.exists()) return;
+  }
   if (!file.exists() || !file.open(QIODevice::ReadOnly | QIODevice::Text)) {
     qWarning() << tr("Could not read file:") << filename;
     return;
@@ -1566,7 +1574,7 @@ void Master::loadPdfpcJSON(const QString &filename)
   QMap<int, QString> labels;
   QJsonObject obj;
   int idx, intlabel;
-  QString label;
+  QString label, note;
   for (const auto &element : std::as_const(array)) {
     obj = element.toObject();
     idx = obj.value("idx").toInt(-1);
@@ -1583,6 +1591,8 @@ void Master::loadPdfpcJSON(const QString &filename)
     if ((!label.isEmpty() && (labels.empty() || label != labels.last())) ||
         (obj.value("overlay").toInt(-1) == 0))
       labels[idx] = label;
+    note = obj.value("note").toString();
+    if (!note.isEmpty()) emit sendPageNote(QString::number(idx), label, note);
   }
   if (!labels.isEmpty())
     documents.first()->getDocument()->overrideLabels(labels);

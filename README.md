@@ -15,6 +15,7 @@ This software uses the Qt framework and the PDF engine MuPDF or Poppler.
 * (optionally) show separate presentation file for speaker or use LaTeX-beamer's option to show notes on second screen
 * timer indicates progress relative to a predefined schedule by its color
 * navigate using document outline, thumbnail slides, page numbers/labels and links
+* read pdfpc JSON file with markdown notes and overlay information as produced by [polylux2pdfpc](https://polylux.dev/book/external/pdfpc.html)
 
 ## Screenshots
 These screenshots show only a few examples how the speaker's screen can look. The audience sees only the presentation except if you specify something else.

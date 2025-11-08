@@ -1554,5 +1554,9 @@ Konfiguriere Zwischenspeicher (Cache). Folien werden in gerendert und in einen k
         <source>Parsing the GUI configuration failed with error code</source>
         <translation>Einlesen der GUI-Konfigurationsdatei ist fehlgeschlagen mit Fehlercode</translation>
     </message>
+    <message>
+        <source>pdfpc JSON file for notes and overlays</source>
+        <translation>pdfpc JSON-Datei für Notizen und Overlays</translation>
+    </message>
 </context>
 </TS>

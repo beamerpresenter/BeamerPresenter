@@ -65,8 +65,7 @@ void SettingsWidget::initManual()
                                   Qt::LinksAccessibleByMouse |
                                   Qt::LinksAccessibleByKeyboard);
   QFile file(preferences()->manual_file);
-  file.open(QFile::ReadOnly | QFile::Text);
-  if (file.isReadable())
+  if (file.open(QFile::ReadOnly | QFile::Text))
     manual->setHtml(file.readAll());
   else
     manual->setPlainText("Manual file not found or not readable:\n" +

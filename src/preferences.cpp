@@ -307,7 +307,7 @@ void Preferences::loadSettings()
       debug_level |= string_to_debug_flag(flag);
   }
 #endif
-  if (settings.contains("log") && settings.value("log", false).toBool())
+  if (settings.value("log", false).toBool())
     global_flags |= LogSlideChanges;
   else
     global_flags &= ~LogSlideChanges;
@@ -319,6 +319,8 @@ void Preferences::loadSettings()
     global_flags |= OpenExternalLinks;
   else
     global_flags &= ~OpenExternalLinks;
+  if (settings.value("autoload pdfpc", false).toBool())
+    global_flags |= AutoloadPdfpc;
 
   qreal num;
   {

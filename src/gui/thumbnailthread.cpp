@@ -18,7 +18,7 @@ ThumbnailThread::ThumbnailThread(std::shared_ptr<const PdfDocument> document)
 {
   if (!document) return;
 
-    // Create the renderer without any checks.
+  // Create the renderer without any checks.
 #ifdef USE_EXTERNAL_RENDERER
   if (preferences()->renderer == Renderer::ExternalRenderer)
     renderer = new ExternalRenderer(preferences()->rendering_command,

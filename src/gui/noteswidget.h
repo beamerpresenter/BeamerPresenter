@@ -127,6 +127,13 @@ class NotesWidget : public QTextEdit
   /// @see loadDrawings()
   void readNotes(QXmlStreamReader &reader);
 
+  /// Set notes string for slide.
+  /// @param number page index as string, used as key if per_page == true
+  /// @param label page label, used as key if per_page == false
+  /// @param note plain text or markdown note
+  void setPageNote(const QString number, const QString label,
+                   const QString note);
+
  signals:
   /// Notify Master of new unsaved changes.
   void newUnsavedChanges();

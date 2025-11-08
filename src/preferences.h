@@ -55,6 +55,8 @@ class Preferences : public QObject
     OpenExternalLinks = 1 << 3,
     /// Finalize drawing paths
     FinalizeDrawnPaths = 1 << 4,
+    /// Automatically load pdfpc JSON file.
+    AutoloadPdfpc = 1 << 5,
   };
   Q_DECLARE_FLAGS(GlobalFlags, GlobalFlag);
   Q_FLAG(GlobalFlags);

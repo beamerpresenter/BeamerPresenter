@@ -23,6 +23,9 @@ automatic slide changes=true
 external links=false
 # color for highlighting search results
 search highlight color=#6428643b
+# automatically load pdfpc files: when opening "file.pdf",
+# beamerpresenter will automatically try to load "file.pdfpc"
+autoload pdfpc=false
 
 [drawing]
 # number of history steps on the currently shown slide

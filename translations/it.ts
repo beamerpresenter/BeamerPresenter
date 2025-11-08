@@ -1558,5 +1558,9 @@ Configura cache. Le diapositive vengono renderizzate in una cache compressa. Que
         <source>Parsing the GUI configuration failed with error code</source>
         <translation>Analisi della configurazione GUI non riuscita con codice di errore</translation>
     </message>
+    <message>
+        <source>pdfpc JSON file for notes and overlays</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 </TS>

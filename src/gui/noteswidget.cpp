@@ -28,31 +28,32 @@ void NotesWidget::loadNotes(const QString &filename)
   // TODO: maybe find better implementation for this:
   // use direct function calls instead of signal-slot mechanism
   QFile file(filename);
-  file.open(QFile::ReadOnly | QFile::Text);
-  if (file.isReadable()) {
-    QXmlStreamReader reader(&file);
-    reader.readNext();
-    while (!reader.atEnd()) {
-      if (reader.readNext() == QXmlStreamReader::StartElement) {
-        // TODO: QStringView::toUtf8() is probably inefficient for string
-        // comparison
-        if (reader.name().toUtf8() == "speakernotes")
-          readNotes(reader);
-        else if (reader.name().toUtf8() == "xournal") {
-          // Trying to read a file which should probably be read by PdfMaster.
-          reader.clear();
-          file.close();
-          emit loadDrawings(filename);
-          return;
-        }
-        break;
-      }
-    }
-    if (!reader.hasError())
-      file_path = filename;
-    else
-      qWarning() << "Parsing xml failed:" << reader.errorString();
+  if (!file.open(QFile::ReadOnly | QFile::Text)) {
+    qWarning() << "Failed to open notes file:" << filename;
+    return;
   }
+  QXmlStreamReader reader(&file);
+  reader.readNext();
+  while (!reader.atEnd()) {
+    if (reader.readNext() == QXmlStreamReader::StartElement) {
+      // TODO: QStringView::toUtf8() is probably inefficient for string
+      // comparison
+      if (reader.name().toUtf8() == "speakernotes")
+        readNotes(reader);
+      else if (reader.name().toUtf8() == "xournal") {
+        // Trying to read a file which should probably be read by PdfMaster.
+        reader.clear();
+        file.close();
+        emit loadDrawings(filename);
+        return;
+      }
+      break;
+    }
+  }
+  if (!reader.hasError())
+    file_path = filename;
+  else
+    qWarning() << "Parsing xml failed:" << reader.errorString();
 }
 
 void NotesWidget::readNotes(QXmlStreamReader &reader)
@@ -233,4 +234,17 @@ void NotesWidget::pageChanged(const int slide, const int page)
   }
   // Load text from new page_label.
   setHtml(text_per_slide.value(page_label));
+}
+
+void NotesWidget::setPageNote(const QString number, const QString label,
+                              const QString note)
+{
+  const QString &target = per_page ? number : label;
+  if (target.isEmpty() || note.isEmpty()) return;
+  QTextDocument *tmp_doc =
+      target == page_label ? document() : document()->clone();
+  tmp_doc->setMarkdown(note);
+  text_per_slide[target] = tmp_doc->toHtml();
+  if (tmp_doc != document()) delete tmp_doc;
+  emit newUnsavedChanges();
 }

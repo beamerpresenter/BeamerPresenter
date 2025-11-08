@@ -311,6 +311,9 @@ class Master : public QObject
   void setTotalTime(const QTime time);
   /// Tell PdfMaster to save drawings.
   void saveDrawings(const QString filename);
+  /// Send notes per page to notes widget.
+  void sendPageNote(const QString number, const QString label,
+                    const QString note);
 };
 
 #endif  // MASTER_H

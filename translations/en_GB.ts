@@ -1552,5 +1552,9 @@ Configure cache. Slides are rendered to compressed cache. These settings defined
         <source>Parsing the GUI configuration failed with error code</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>pdfpc JSON file for notes and overlays</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 </TS>
