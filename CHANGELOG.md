@@ -1,4 +1,8 @@
 # Changelog
+## 0.2.7 (upcoming)
+### new features
+* read speaker notes from pdfpc files
+
 ## 0.2.6
 ### new features
 * flexible mapping of page numbers to slides allows adding empty slides and removing slides

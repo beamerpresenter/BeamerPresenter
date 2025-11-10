@@ -1141,7 +1141,7 @@ Konfiguriere Zwischenspeicher (Cache). Folien werden in gerendert und in einen k
     </message>
     <message>
         <source>select pdfpc/JSON file containing overlay information</source>
-        <translation>wähle pdfpc/JSON-Datei mit Informationen zu Overlays</translation>
+        <translation type="vanished">wähle pdfpc/JSON-Datei mit Informationen zu Overlays</translation>
     </message>
     <message>
         <source>Select JSON file containing overlay information</source>
@@ -1154,6 +1154,14 @@ Konfiguriere Zwischenspeicher (Cache). Folien werden in gerendert und in einen k
     <message>
         <source>export svg</source>
         <translation>SVG exportieren</translation>
+    </message>
+    <message>
+        <source>automatically load pdfpc files</source>
+        <translation>pdfpc-Datein automatisch laden</translation>
+    </message>
+    <message>
+        <source>select pdfpc/JSON file for overlays and notes</source>
+        <translation>pdfpc/JSON-Datei für overlays und Notizen auswählen</translation>
     </message>
 </context>
 <context>

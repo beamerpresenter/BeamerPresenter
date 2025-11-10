@@ -352,7 +352,9 @@ class Preferences : public QObject
   /// "per page", "per label" and "cumulative"
   void setOverlayMode(const QString &string);
   /// Enable or disable automatic slide changes.
-  void setAutoSlideChanges(const bool show);
+  void setAutoSlideChanges(const bool enable);
+  /// Enable or disable automatic slide changes.
+  void setAutoloadPdfpc(const bool enable);
   /// Enable or disable external links.
   void setExternalLinks(const bool enable);
   /// Enable or disable finalizing drawn paths.

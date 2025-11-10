@@ -533,7 +533,7 @@
     </message>
     <message>
         <source>JSON file is empty or parsing failed:</source>
-        <translation>Il file JSON è vuoto o l'analisi non è riuscita:</translation>
+        <translation>Il file JSON è vuoto o l&apos;analisi non è riuscita:</translation>
     </message>
 </context>
 <context>
@@ -1001,7 +1001,7 @@ Configura cache. Le diapositive vengono renderizzate in una cache compressa. Que
     </message>
     <message>
         <source>scroll up</source>
-        <translation>scorrere verso l'alto</translation>
+        <translation>scorrere verso l&apos;alto</translation>
     </message>
     <message>
         <source>scroll home</source>
@@ -1141,7 +1141,7 @@ Configura cache. Le diapositive vengono renderizzate in una cache compressa. Que
     </message>
     <message>
         <source>select pdfpc/JSON file containing overlay information</source>
-        <translation>seleziona il file pdfpc/JSON contenente le informazioni di sovrapposizione</translation>
+        <translation type="vanished">seleziona il file pdfpc/JSON contenente le informazioni di sovrapposizione</translation>
     </message>
     <message>
         <source>Select JSON file containing overlay information</source>
@@ -1154,6 +1154,14 @@ Configura cache. Le diapositive vengono renderizzate in una cache compressa. Que
     <message>
         <source>export svg</source>
         <translation>esporta svg</translation>
+    </message>
+    <message>
+        <source>automatically load pdfpc files</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>select pdfpc/JSON file for overlays and notes</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

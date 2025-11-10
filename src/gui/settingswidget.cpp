@@ -27,6 +27,12 @@
 #include "src/names.h"
 #include "src/preferences.h"
 
+#if (QT_VERSION_MAJOR >= 6)
+#define QCHECKBOX_CLICKED &QCheckBox::clicked
+#else
+#define QCHECKBOX_CLICKED QOverload<bool>::of(&QCheckBox::clicked)
+#endif
+
 SettingsWidget::SettingsWidget(QWidget *parent)
     : QTabWidget(parent),
       manual(new QTextEdit(this)),
@@ -244,12 +250,6 @@ void SettingsWidget::initRendering()
 #endif
   layout->addRow(tr("page part threshold"), page_part_box);
 
-  QPushButton *select_file_button = new QPushButton(
-      tr("select pdfpc/JSON file containing overlay information"), rendering);
-  connect(select_file_button, &QPushButton::clicked, this,
-          &SettingsWidget::setPdfpcJSONFile);
-  layout->addRow(select_file_button);
-
   rendering->setLayout(layout);
 }
 
@@ -331,14 +331,8 @@ void SettingsWidget::initMisc()
 
   QCheckBox *box = new QCheckBox(tr("log slide changes"), misc);
   box->setChecked(preferences()->global_flags & Preferences::LogSlideChanges);
-#if (QT_VERSION_MAJOR >= 6)
-  connect(box, &QCheckBox::clicked, WritableGlobalPreferences::writable(),
+  connect(box, QCHECKBOX_CLICKED, WritableGlobalPreferences::writable(),
           &Preferences::setLogSlideChanges);
-#else
-  connect(box, QOverload<bool>::of(&QCheckBox::clicked),
-          WritableGlobalPreferences::writable(),
-          &Preferences::setLogSlideChanges);
-#endif
   layout->addRow(box);
 
   // Enable/disable automatic slide changes
@@ -352,41 +346,23 @@ void SettingsWidget::initMisc()
 
   box = new QCheckBox(tr("automatic slide changes"), misc);
   box->setChecked(preferences()->global_flags & Preferences::AutoSlideChanges);
-#if (QT_VERSION_MAJOR >= 6)
-  connect(box, &QCheckBox::clicked, WritableGlobalPreferences::writable(),
+  connect(box, QCHECKBOX_CLICKED, WritableGlobalPreferences::writable(),
           &Preferences::setAutoSlideChanges);
-#else
-  connect(box, QOverload<bool>::of(&QCheckBox::clicked),
-          WritableGlobalPreferences::writable(),
-          &Preferences::setAutoSlideChanges);
-#endif
   layout->addRow(box);
 
   // Enable/disable external links
   box = new QCheckBox(tr("open external links"), misc);
   box->setChecked(preferences()->global_flags & Preferences::OpenExternalLinks);
-#if (QT_VERSION_MAJOR >= 6)
-  connect(box, &QCheckBox::clicked, WritableGlobalPreferences::writable(),
+  connect(box, QCHECKBOX_CLICKED, WritableGlobalPreferences::writable(),
           &Preferences::setExternalLinks);
-#else
-  connect(box, QOverload<bool>::of(&QCheckBox::clicked),
-          WritableGlobalPreferences::writable(),
-          &Preferences::setExternalLinks);
-#endif
   layout->addRow(box);
 
   // Enable/disable path finalization
   box = new QCheckBox(tr("finalize drawn paths"), misc);
   box->setChecked(preferences()->global_flags &
                   Preferences::FinalizeDrawnPaths);
-#if (QT_VERSION_MAJOR >= 6)
-  connect(box, &QCheckBox::clicked, WritableGlobalPreferences::writable(),
+  connect(box, QCHECKBOX_CLICKED, WritableGlobalPreferences::writable(),
           &Preferences::setFinalizePaths);
-#else
-  connect(box, QOverload<bool>::of(&QCheckBox::clicked),
-          WritableGlobalPreferences::writable(),
-          &Preferences::setFinalizePaths);
-#endif
   layout->addRow(box);
 
   // Drawing mode
@@ -422,6 +398,17 @@ void SettingsWidget::initMisc()
   connect(combo_box, &QComboBox::currentTextChanged,
           WritableGlobalPreferences::writable(), &Preferences::setOverlayMode);
   layout->addRow(tr("drawing mode for overlays"), combo_box);
+
+  box = new QCheckBox(tr("automatically load pdfpc files"), rendering);
+  box->setChecked(preferences()->global_flags & Preferences::AutoloadPdfpc);
+  connect(box, QCHECKBOX_CLICKED, WritableGlobalPreferences::writable(),
+          &Preferences::setAutoloadPdfpc);
+  layout->addRow(box);
+  select_file_button = new QPushButton(
+      tr("select pdfpc/JSON file for overlays and notes"), rendering);
+  connect(select_file_button, &QPushButton::clicked, this,
+          &SettingsWidget::setPdfpcJSONFile);
+  layout->addRow(select_file_button);
 
   misc->setLayout(layout);
 }

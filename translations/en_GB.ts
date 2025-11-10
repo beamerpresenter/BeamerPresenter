@@ -1138,10 +1138,6 @@ Configure cache. Slides are rendered to compressed cache. These settings defined
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>select pdfpc/JSON file containing overlay information</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Select JSON file containing overlay information</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1151,6 +1147,14 @@ Configure cache. Slides are rendered to compressed cache. These settings defined
     </message>
     <message>
         <source>export svg</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>automatically load pdfpc files</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>select pdfpc/JSON file for overlays and notes</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

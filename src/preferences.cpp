@@ -920,13 +920,22 @@ void Preferences::setOverlayMode(const QString &string)
   settings.endGroup();
 }
 
-void Preferences::setAutoSlideChanges(const bool show)
+void Preferences::setAutoSlideChanges(const bool enable)
 {
-  if (show)
+  if (enable)
     global_flags |= AutoSlideChanges;
   else
     global_flags &= ~AutoSlideChanges;
-  settings.setValue("automatic slide changes", show);
+  settings.setValue("automatic slide changes", enable);
+}
+
+void Preferences::setAutoloadPdfpc(const bool enable)
+{
+  if (enable)
+    global_flags |= AutoloadPdfpc;
+  else
+    global_flags &= ~AutoloadPdfpc;
+  settings.setValue("autoload pdfpc", enable);
 }
 
 void Preferences::setFinalizePaths(const bool finalize)
