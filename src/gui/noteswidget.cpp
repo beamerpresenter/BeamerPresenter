@@ -243,7 +243,11 @@ void NotesWidget::setPageNote(const QString number, const QString label,
   if (target.isEmpty() || note.isEmpty()) return;
   QTextDocument *tmp_doc =
       target == page_label ? document() : document()->clone();
+#if (QT_VERSION >= QT_VERSION_CHECK(5, 14, 0))
   tmp_doc->setMarkdown(note);
+#else
+  tmp_doc->setPlainText(note);
+#endif
   text_per_slide[target] = tmp_doc->toHtml();
   if (tmp_doc != document()) delete tmp_doc;
   emit newUnsavedChanges();

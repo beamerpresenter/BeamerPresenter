@@ -21,7 +21,7 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 # Define available build/config types
 set(QT_VERSION_MAJOR 6 CACHE STRING "Qt major version")
 # Minor Qt version is required for defining dependencies when packaging
-set(QT_VERSION_MINOR 7 CACHE STRING "Qt minor version")
+set(QT_VERSION_MINOR 10 CACHE STRING "Qt minor version")
 
 # Check if the required Qt libraries are available
 find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Core REQUIRED)

@@ -15,7 +15,7 @@ sudo apt install ./beamerpresenter-poppler-0.2.6-qt5-focal-x86_64.deb
 # Arch/Manjaro/Endeavour
 sudo pacman -U beamerpresenter-poppler-qt6-0.2.6-1-x86_64.pkg.tar.zst
 # Flatpak
-flatpak install org.kde.Platform/x86_64/6.8 # can be skipped if already installed
+flatpak install org.kde.Platform/x86_64/6.10  # 6.8 in older versions, can be skipped if already installed
 flatpak install BeamerPresenter-Qt6.flatpak
 ```
 Verify the signature of the checksums in `SHA256SUMS`:
@@ -183,7 +183,7 @@ These options are mainly provided for Linux distributions in which MuPDF is stat
 | Option | Value | Explanation |
 | ------ | ----- | ----------- |
 | `INSTALL_LICENSE` | ON | copy the license to /usr/share/licenses/beamerpresenter/LICENSE |
-| `QT_VERSION_MINOR` | 7 | only relevant for packaging (dependency version checking) |
+| `QT_VERSION_MINOR` | 10 | only relevant for packaging (dependency version checking) |
 | `CMAKE_INSTALL_PREFIX` | /usr | install prefix. If not specified, this will be /usr/local in Linux |
 | `CMAKE_INSTALL_SYSCONFDIR` | /etc | system configuration directory |
 | `GENERATE_MANPAGES` | ON | Generate man pages and include them in installation |
