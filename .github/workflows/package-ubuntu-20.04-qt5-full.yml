@@ -28,7 +28,7 @@ jobs:
 
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v4
+      uses: actions/checkout@v6
 
     # Initializes the CodeQL tools for scanning.
     - name: Initialize CodeQL
@@ -85,7 +85,7 @@ jobs:
       uses: github/codeql-action/analyze@v3
 
     - name: Archive performance analysis report
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v6
       with:
         name: codeql-report.sarif
         path: /home/runner/work/BeamerPresenter/results/cpp.sarif
@@ -94,7 +94,7 @@ jobs:
       run: cpack --config build_dir/CPackConfig.cmake
 
     - name: Archive debian package
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v6
       with:
         name: beamerpresenter-full-qt5-x86_64.deb
         path: /home/runner/work/BeamerPresenter/BeamerPresenter/beamerpresenter-full-qt5-x86_64.deb

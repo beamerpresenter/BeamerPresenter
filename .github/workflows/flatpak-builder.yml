@@ -27,18 +27,15 @@ jobs:
 
     steps:
     - name: Checkout
-      uses: actions/checkout@v4
+      uses: actions/checkout@v6
 
     - name: Build flatpak
       uses: bilelmoussaoui/flatpak-github-actions/flatpak-builder@v6
       with:
-        bundle: BeamerPresenter.flatpak
+        bundle: BeamerPresenter-${{ matrix.renderer}}-qt${{ matrix.qt }}.flatpak
         manifest-path: packaging/io.github.beamerpresenter.BeamerPresenter.${{ matrix.renderer}}-qt${{ matrix.qt}}.yml
         arch: x86_64
-        cache-key: flatpak-builder-${{ github.sha }}-${{ matrix.renderer }}
-
-    - name: Rename
-      run: mv BeamerPresenter.flatpak BeamerPresenter-${{ matrix.renderer}}-qt${{ matrix.qt }}.flatpak
+        cache-key: flatpak-builder-${{ github.sha }}-${{ matrix.renderer }}-${{ matrix.kde }}
 
     - name: Release
       uses: softprops/action-gh-release@v2

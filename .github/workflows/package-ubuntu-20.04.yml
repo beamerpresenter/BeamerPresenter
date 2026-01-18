@@ -17,7 +17,7 @@ jobs:
 
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v4
+      uses: actions/checkout@v6
 
     - name: Install Dependencies
       run: >
@@ -72,7 +72,7 @@ jobs:
         mv beamerpresenter-poppler-qt5-x86_64.deb beamerpresenter-poppler-qt5-focal-x86_64.deb
 
     - name: Archive package with Qt5 + Poppler
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v6
       with:
         name: beamerpresenter-poppler-qt5-focal-x86_64.deb
         path: /home/runner/work/BeamerPresenter/BeamerPresenter/beamerpresenter-poppler-qt5-focal-x86_64.deb
@@ -108,7 +108,7 @@ jobs:
         mv beamerpresenter-mupdf-qt5-x86_64.deb beamerpresenter-mupdf-qt5-focal-x86_64.deb
 
     - name: Archive package with Qt5 + MuPDF
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v6
       with:
         name: beamerpresenter-mupdf-qt5-focal-x86_64.deb
         path: /home/runner/work/BeamerPresenter/BeamerPresenter/beamerpresenter-mupdf-qt5-focal-x86_64.deb
@@ -168,7 +168,7 @@ jobs:
         mv beamerpresenter-mupdf-small-qt5-x86_64.deb beamerpresenter-mupdf-small-qt5-focal-x86_64.deb
 
     - name: Archive package with Qt5 + small MuPDF
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v6
       with:
         name: beamerpresenter-mupdf-small-qt5-focal-x86_64.deb
         path: /home/runner/work/BeamerPresenter/BeamerPresenter/beamerpresenter-mupdf-small-qt5-focal-x86_64.deb
