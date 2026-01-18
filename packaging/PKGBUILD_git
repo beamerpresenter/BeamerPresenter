@@ -42,7 +42,7 @@ else
 fi
 
 pkgname=beamerpresenter-git
-pkgver=0.2.6_1009.2000c05
+pkgver=0.2.6_1024.1e00f5a
 pkgrel=1
 pkgdesc="Modular multi-screen pdf presenter (git)"
 arch=('x86_64')
@@ -57,7 +57,7 @@ sha256sums=('SKIP')
 
 if [ "${_use_mupdf}" == 'ON' ]
 then
-    depends+=('jbig2dec' 'openjpeg2' 'gumbo-parser' 'libmupdf')
+    depends+=('libmupdf')
 elif [ "${_use_mupdf}" == 'OFF' ]
 then
     license=('GPL3')

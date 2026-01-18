@@ -18,7 +18,7 @@ _basename='beamerpresenter'
 _pkgname="${_basename}${_renderer}-qt${_qt_version_major}"
 pkgname="${MINGW_PACKAGE_PREFIX}-${_pkgname}"
 pkgver=0.2.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Modular multi-screen pdf presenter (mingw-w64)"
 arch=('any')
 mingw_arch=('mingw64' 'ucrt64' 'clang64' 'clangarm64')
@@ -34,7 +34,7 @@ sha256sums=('ed6b397ea4ec0afdf7a9bf8f3db272ae9999fab1d485a29b9f9b82615472b1fd')
 
 if [ "${_use_mupdf}" == 'ON' ]
 then
-    makedepends+=("${MINGW_PACKAGE_PREFIX}-mupdf-libmupdf")
+    makedepends+=("${MINGW_PACKAGE_PREFIX}-libmupdf")
     depends+=("${MINGW_PACKAGE_PREFIX}-jbig2dec" "${MINGW_PACKAGE_PREFIX}-openjpeg2" "${MINGW_PACKAGE_PREFIX}-gumbo-parser" )
     license=('spdx:GPL-3.0-or-later AND AGPL-3.0')
 fi
@@ -59,7 +59,7 @@ build() {
         -DUSE_EXTERNAL_RENDERER=OFF \
         -DUSE_TRANSLATIONS=ON \
         -DINSTALL_LICENSE=ON \
-        -DLINK_MUPDF_THIRD=ON \
+        -DLINK_MUPDF_THIRD=OFF \
         -DLINK_MUJS=OFF \
         -DLINK_GUMBO=ON \
         -DQT_VERSION_MAJOR="${_qt_version_major}" \
