@@ -86,7 +86,7 @@ sudo apt install ./beamerpresenter-poppler-0.2.6-qt6.4-x86_64.deb
 
 
 ## Flatpak
-The flatpak package is built using github actions. The build can be reproduced locally using the file `io.github.beamerpresenter.yml`.
+The flatpak package is built using github actions. The build can be reproduced locally using the file `io.github.beamerpresenter.BeamerPresenter.*.yml`.
 
 
 ## Windows

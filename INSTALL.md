@@ -15,8 +15,8 @@ sudo apt install ./beamerpresenter-poppler-0.2.6-qt5-focal-x86_64.deb
 # Arch/Manjaro/Endeavour
 sudo pacman -U beamerpresenter-poppler-qt6-0.2.6-1-x86_64.pkg.tar.zst
 # Flatpak
-flatpak install org.kde.Platform/x86_64/6.10  # 6.8 in older versions, can be skipped if already installed
-flatpak install BeamerPresenter-Qt6.flatpak
+flatpak install org.kde.Platform/x86_64/6.10
+flatpak install BeamerPresenter-mupdf-qt6.flatpak
 ```
 Verify the signature of the checksums in `SHA256SUMS`:
 ```sh

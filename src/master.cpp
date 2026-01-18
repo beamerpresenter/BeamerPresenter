@@ -895,7 +895,7 @@ void Master::handleAction(const Action action)
       break;
     }
     case ExportDrawingsSvg:
-      for (auto pdf : documents) pdf->exportAllSvg();
+      for (const auto &doc : std::as_const(documents)) doc->exportAllSvg();
       break;
     case ReloadFiles: {
       // TODO: problems with slide labels, navigation, and videos after
@@ -1545,6 +1545,7 @@ bool Master::readXmlHeader(QXmlStreamReader &reader, const bool read_notes,
 
 void Master::loadPdfpcJSON(const QString &filename)
 {
+  // 1. Find and open file.
   if (documents.isEmpty() || !documents.first()) return;
   QFile file(filename);
   if (filename.isEmpty()) {
@@ -1560,16 +1561,28 @@ void Master::loadPdfpcJSON(const QString &filename)
   QJsonParseError error;
   const QJsonDocument doc = QJsonDocument::fromJson(file.readAll(), &error);
   if (error.error != QJsonParseError::NoError || doc.isNull() ||
-      doc.isEmpty()) {
+      doc.isEmpty() || !doc.isObject()) {
     qWarning() << tr("JSON file is empty or parsing failed:")
                << error.errorString();
     return;
   }
-  QJsonArray array;
-  if (doc.isArray())
-    array = doc.array();
-  else
-    array = doc.object().value("pages").toArray();
+
+  // 2. Read properties.
+  const QJsonValue duration = doc.object().value("duration");
+  if (!duration.isUndefined()) {
+    int ms = 60000 * duration.toInt(-1);
+    if (ms == -60000) ms = 60000 * duration.toDouble(0.0);
+    if (ms > 0) {
+      emit setTotalTime(QTime::fromMSecsSinceStartOfDay(ms));
+      // If may happen that this is called before a timer widget is created.
+      // Then setTotalTime(time) will do nothing and preferences()->msecs_total
+      // must be set directly.
+      WritableGlobalPreferences::writable()->msecs_total = ms;
+    }
+  }
+
+  // 3. Read page array.
+  const QJsonArray array = doc.object().value("pages").toArray();
   if (array.isEmpty()) return;
   QMap<int, QString> labels;
   QJsonObject obj;

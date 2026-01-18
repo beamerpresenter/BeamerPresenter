@@ -1,0 +1,67 @@
+app-id: io.github.beamerpresenter.BeamerPresenter.mupdf
+branch: master
+runtime: org.kde.Platform
+runtime-version: 5.15-24.08
+sdk: org.kde.Sdk
+command: beamerpresenter
+build-options:
+  strip: true
+  no-debuginfo: true
+finish-args:
+  - "--socket=x11"
+  - "--socket=wayland"
+  - "--socket=pulseaudio"
+  - "--filesystem=xdg-documents"
+  - "--filesystem=xdg-download"
+  - "--filesystem=xdg-public-share"
+  - "--filesystem=xdg-desktop"
+  - "--filesystem=xdg-config/beamerpresenter"
+  - "--own-name=io.github.beamerpresenter.BeamerPresenter.mupdf"
+modules:
+  - name: mupdf
+    buildsystem: autotools
+    no-autogen: true
+    make-args:
+    - "build=release"
+    - "prefix=/app"
+    - "libs"
+    - "install-libs"
+    no-make-install: true
+    build-options:
+      cflags: ' -fPIC -ffat-lto-objects'
+      cxxflags: ' -fPIC'
+      env:
+        USE_SYSTEM_LIBS: 'no'
+        XCFLAGS: ' -DTOFU -DTOFU_CJK -DTOFU_SIL -DFZ_ENABLE_JS=0'
+    sources:
+    - type: archive
+      url: https://mupdf.com/downloads/archive/mupdf-1.27.0-source.tar.lz
+      sha256: 61b109c82093a1c39b1b7f58c04b6d8ad6fe8e83e266ce1d8423e1e5c9310911
+    cleanup:
+      - '*'
+  - name: beamerpresenter
+    buildsystem: cmake-ninja
+    config-opts:
+    - "-DQT_VERSION_MAJOR=5"
+    - "-DQT_VERSION_MINOR=15"
+    - "-DUSE_POPPLER=OFF"
+    - "-DUSE_MUPDF=ON"
+    - "-DUSE_QTPDF=OFF"
+    - "-DLINK_MUJS=OFF"
+    - "-DLINK_GUMBO=OFF"
+    - "-DMUPDF_USE_SYSTEM_LIBS=OFF"
+    - "-DUSE_EXTERNAL_RENDERER=OFF"
+    - "-DUSE_TRANSLATIONS=ON"
+    - "-DGIT_VERSION=ON"
+    - "-DAPPID_NAME=io.github.beamerpresenter.BeamerPresenter"
+    - "-DINSTALL_METAINFO=ON"
+    - "-DCMAKE_BUILD_TYPE=Release"
+    - "-DCMAKE_INSTALL_PREFIX=/app"
+    - "-DCMAKE_INSTALL_SYSCONFDIR=/app/etc"
+    - "-DCMAKE_INSTALL_DATAROOTDIR=/app/share"
+    - "-DCMAKE_INSTALL_LIBDIR=/app/lib"
+    - "-DCMAKE_INSTALL_INCLUDEDIR=/app/include"
+    sources:
+    - type: git
+      url: https://github.com/beamerpresenter/BeamerPresenter.git
+      branch: main

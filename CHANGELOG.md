@@ -1,7 +1,7 @@
 # Changelog
 ## 0.2.7 (upcoming)
-### new features
-* read speaker notes from pdfpc files
+* new: read speaker notes from pdfpc files
+* new: flatpak builds with MuPDF
 
 ## 0.2.6
 ### new features

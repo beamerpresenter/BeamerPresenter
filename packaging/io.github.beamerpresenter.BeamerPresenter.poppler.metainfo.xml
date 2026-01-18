@@ -1,18 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <component type="desktop">
-  <id>io.github.beamerpresenter.BeamerPresenter</id>
+  <id>io.github.beamerpresenter.BeamerPresenter.poppler</id>
   <name>BeamerPresenter</name>
   <project_license>GPL-3.0</project_license>
   <metadata_license>CC0-1.0</metadata_license>
-  <developer_name>Valentin Bruch</developer_name>
-  <summary>Show PDF presentation with extra information for the speaker.</summary>
+  <developer id="io.github.stiglers-eponym">
+    <name>Valentin Bruch</name>
+  </developer>
+  <summary>Show PDF presentation with extra information for the speaker</summary>
   <url type="homepage">https://github.com/beamerpresenter/BeamerPresenter</url>
   <update_contact>software@vbruch.eu</update_contact>
   <description>
     <p>BeamerPresenter shows a PDF presentation to speaker and audience in a
     multi-screen setup with various control options and extra information
     for the speaker.</p>
-    <p>Features:
+    <p>Features:</p>
     <ul>
       <li>draw, highlight and point on the presentation with tools selected per input device</li>
       <li>supports pressure sensitive stylus input and different draw styles (e.g. Wacom tablet)</li>
@@ -23,11 +25,11 @@
       <li>modular, configurable user interface for maximal flexibility</li>
       <li>does not try to take the role of your window manager</li>
     </ul>
-    </p>
   </description>
   <categories>
     <category>Office</category>
-    <category>Qt6</category>
+    <category>Presentation</category>
+    <category>Qt</category>
   </categories>
   <screenshots>
     <screenshot type="default">

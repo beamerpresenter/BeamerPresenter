@@ -1,0 +1,50 @@
+name: "Build flatpak"
+
+on:
+  push:
+    tags:
+      - "v*"
+  workflow_dispatch:
+
+jobs:
+  flatpak:
+    runs-on: ubuntu-24.04
+
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - { renderer: poppler, qt: 6, kde: "6.10"}
+          - { renderer: poppler, qt: 5, kde: "5.15-24.08"}
+          - { renderer: mupdf, qt: 6, kde: "6.10"}
+          - { renderer: mupdf, qt: 5, kde: "5.15-24.08"}
+
+    name: flatpak ${{ matrix.renderer }} Qt ${{ matrix.qt }}
+
+    container:
+      image: ghcr.io/flathub-infra/flatpak-github-actions:kde-${{ matrix.kde }}
+      options: --privileged
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+
+    - name: Build flatpak
+      uses: bilelmoussaoui/flatpak-github-actions/flatpak-builder@v6
+      with:
+        bundle: BeamerPresenter.flatpak
+        manifest-path: packaging/io.github.beamerpresenter.BeamerPresenter.${{ matrix.renderer}}-qt${{ matrix.qt}}.yml
+        arch: x86_64
+        cache-key: flatpak-builder-${{ github.sha }}-${{ matrix.renderer }}
+
+    - name: Rename
+      run: mv BeamerPresenter.flatpak BeamerPresenter-${{ matrix.renderer}}-qt${{ matrix.qt }}.flatpak
+
+    - name: Release
+      uses: softprops/action-gh-release@v2
+      if: startsWith(github.ref, 'refs/tags/')
+      with:
+        files: |
+          BeamerPresenter-${{ matrix.renderer}}-qt${{ matrix.qt }}.flatpak
+        draft: true
+        token: ${{ secrets.GITHUB_TOKEN }}

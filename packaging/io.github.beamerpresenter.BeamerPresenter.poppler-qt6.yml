@@ -1,0 +1,65 @@
+app-id: io.github.beamerpresenter.BeamerPresenter.poppler
+branch: master
+runtime: org.kde.Platform
+runtime-version: "6.10"
+sdk: org.kde.Sdk
+command: beamerpresenter
+build-options:
+  strip: true
+  no-debuginfo: true
+finish-args:
+  - "--socket=x11"
+  - "--socket=wayland"
+  - "--socket=pulseaudio"
+  - "--filesystem=xdg-documents"
+  - "--filesystem=xdg-download"
+  - "--filesystem=xdg-public-share"
+  - "--filesystem=xdg-desktop"
+  - "--filesystem=xdg-config/beamerpresenter"
+  - "--own-name=io.github.beamerpresenter.BeamerPresenter.poppler"
+modules:
+  - name: poppler
+    buildsystem: cmake-ninja
+    config-opts:
+    - "-DCMAKE_INSTALL_PREFIX=/app"
+    - "-DCMAKE_INSTALL_LIBDIR=/app/lib"
+    - "-DCMAKE_INSTALL_INCLUDEDIR=/app/include"
+    - "-DENABLE_LIBOPENJPEG=none"
+    - "-DENABLE_BOOST=OFF"
+    - "-DENABLE_UTILS=OFF"
+    - "-DENABLE_LIBCURL=OFF"
+    - "-DENABLE_QT5=OFF"
+    - "-DENABLE_QT6=ON"
+    - "-DENABLE_GLIB=OFF"
+    - "-DENABLE_GOBJECT_INTROSPECTION=OFF"
+    - "-DENABLE_GTK_DOC=OFF"
+    - "-DENABLE_CPP=OFF"
+    cleanup:
+    - "/bin"
+    sources:
+    - type: archive
+      url: https://poppler.freedesktop.org/poppler-26.01.0.tar.xz
+      sha256: 1cb944a4b88847f5fb6551683bc799db59f04990f5d8be07aba2acbf38601089
+  - name: beamerpresenter
+    buildsystem: cmake-ninja
+    config-opts:
+    - "-DQT_VERSION_MAJOR=6"
+    - "-DQT_VERSION_MINOR=10"
+    - "-DUSE_POPPLER=ON"
+    - "-DUSE_MUPDF=OFF"
+    - "-DUSE_QTPDF=OFF"
+    - "-DUSE_EXTERNAL_RENDERER=OFF"
+    - "-DUSE_TRANSLATIONS=ON"
+    - "-DGIT_VERSION=ON"
+    - "-DAPPID_NAME=io.github.beamerpresenter.BeamerPresenter"
+    - "-DINSTALL_METAINFO=ON"
+    - "-DCMAKE_BUILD_TYPE=Release"
+    - "-DCMAKE_INSTALL_PREFIX=/app"
+    - "-DCMAKE_INSTALL_SYSCONFDIR=/app/etc"
+    - "-DCMAKE_INSTALL_DATAROOTDIR=/app/share"
+    - "-DCMAKE_INSTALL_LIBDIR=/app/lib"
+    - "-DCMAKE_INSTALL_INCLUDEDIR=/app/include"
+    sources:
+    - type: git
+      url: https://github.com/beamerpresenter/BeamerPresenter.git
+      branch: main

@@ -1,7 +1,7 @@
-app-id: io.github.beamerpresenter.BeamerPresenter
+app-id: io.github.beamerpresenter.BeamerPresenter.poppler
 branch: master
 runtime: org.kde.Platform
-runtime-version: "6.10"
+runtime-version: 5.15-24.08
 sdk: org.kde.Sdk
 command: beamerpresenter
 build-options:
@@ -16,7 +16,7 @@ finish-args:
   - "--filesystem=xdg-public-share"
   - "--filesystem=xdg-desktop"
   - "--filesystem=xdg-config/beamerpresenter"
-  - "--own-name=io.github.beamerpresenter.BeamerPresenter"
+  - "--own-name=io.github.beamerpresenter.BeamerPresenter.poppler"
 modules:
   - name: poppler
     buildsystem: cmake-ninja
@@ -28,8 +28,8 @@ modules:
     - "-DENABLE_BOOST=OFF"
     - "-DENABLE_UTILS=OFF"
     - "-DENABLE_LIBCURL=OFF"
-    - "-DENABLE_QT5=OFF"
-    - "-DENABLE_QT6=ON"
+    - "-DENABLE_QT5=ON"
+    - "-DENABLE_QT6=OFF"
     - "-DENABLE_GLIB=OFF"
     - "-DENABLE_GOBJECT_INTROSPECTION=OFF"
     - "-DENABLE_GTK_DOC=OFF"
@@ -38,13 +38,13 @@ modules:
     - "/bin"
     sources:
     - type: archive
-      url: https://poppler.freedesktop.org/poppler-25.12.0.tar.xz
-      sha256: c18b40eb36b1a0c5b86e29ca054bf0770304583da4f2cdd42fe86eca6a20de48
+      url: https://poppler.freedesktop.org/poppler-26.01.0.tar.xz
+      sha256: 1cb944a4b88847f5fb6551683bc799db59f04990f5d8be07aba2acbf38601089
   - name: beamerpresenter
     buildsystem: cmake-ninja
     config-opts:
-    - "-DQT_VERSION_MAJOR=6"
-    - "-DQT_VERSION_MINOR=10"
+    - "-DQT_VERSION_MAJOR=5"
+    - "-DQT_VERSION_MINOR=15"
     - "-DUSE_POPPLER=ON"
     - "-DUSE_MUPDF=OFF"
     - "-DUSE_QTPDF=OFF"
