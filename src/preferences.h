@@ -27,7 +27,7 @@ class Master;
 
 /// Class storing various preferences.
 /// It should have only one instance, which is available globally through
-/// the functions writable_preferences() and preferences().
+/// the functions WritableGlobalPreferences::writable() and preferences().
 /// Values get initialized by calling loadSettings().
 class Preferences : public QObject
 {
@@ -138,6 +138,8 @@ class Preferences : public QObject
   PagePart default_page_part = FullPage;
   /// Maximum image size in pixels.
   qreal max_image_size = 3e7;
+  /// Page background brush.
+  QBrush background_brush;
 
 #ifdef USE_MUPDF
   /// PDF engine (should be same as renderer except if renderer is external)
@@ -196,7 +198,8 @@ class Preferences : public QObject
    * be deleted, the remaining key_tools will be deleted in the destructor
    * of preferences().
    * Objects owning a tool which is listed here should always call
-   * writable_preferences().removeKeyTool before deleting this tool.
+   * WritableGlobalPreferences::writable().removeKeyTool before deleting
+   * this tool.
    * */
   QMultiMap<QKeySequence, std::shared_ptr<Tool>> key_tools;
 
@@ -348,6 +351,8 @@ class Preferences : public QObject
   /// Set rendering arguments. It is not checked whether these are valid.
   void setRenderingArguments(const QString &string);
 #endif
+  /// Set page background color (for transparent or empty slides).
+  void setPageBackgroundColor(const QColor &color);
   /// Set overlay mode. Allowed values are defined in string_to_overlay_mode:
   /// "per page", "per label" and "cumulative"
   void setOverlayMode(const QString &string);

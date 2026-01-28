@@ -27,6 +27,7 @@ search highlight color=#6428643b
 # beamerpresenter will automatically try to load "file.pdfpc"
 autoload pdfpc=false
 
+
 [drawing]
 # number of history steps on the currently shown slide
 history length visible=50
@@ -60,6 +61,7 @@ arrow tip scale=1
 # length of the arrow tip relative to half of its width
 arrow tip ratio=1.2
 
+
 [selection]
 # size (in points) of the handles of the selection.
 handle size=7
@@ -71,6 +73,7 @@ selection color=#20808090
 selection outline color=#80808090
 # pen width for drawing the selection rectangle outline.
 selection outline width=0.5
+
 
 [keys]
 # actions affecting drawings and the clipboard
@@ -100,6 +103,7 @@ Ctrl+Q=quit
 F11=fullscreen
 P=toggle timer
 
+
 [rendering]
 # Assume that slides show a presentation and notes for the speaker side-by-side
 # if the ratio width/height of the slide is larger than this threshold.
@@ -109,3 +113,7 @@ page part threshold=2.5
 
 # Maximum size of rendered images in pixels, useful avoid crash due to memory issues
 max image size=2e7
+
+# Background color for transparent slides and (inserted) empty slides.
+# Comment out or remove to keep transparent background.
+background color=white

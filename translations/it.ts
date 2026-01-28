@@ -1163,6 +1163,10 @@ Configura cache. Le diapositive vengono renderizzate in una cache compressa. Que
         <source>select pdfpc/JSON file for overlays and notes</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>slide background color</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>ShapeSelectionButton</name>

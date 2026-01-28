@@ -435,6 +435,8 @@ void Preferences::loadSettings()
       if (!understood_renderer)
         qWarning() << "Invalid renderer argument in settings:" << renderer_str;
     }
+    QColor color = QColor(settings.value("background color").toString());
+    if (color.isValid()) background_brush = color;
   }
   settings.endGroup();
 
@@ -908,6 +910,14 @@ void Preferences::setRenderingArguments(const QString &string)
   settings.endGroup();
 }
 #endif
+
+void Preferences::setPageBackgroundColor(const QColor &color)
+{
+  background_brush = color;
+  settings.beginGroup("rendering");
+  settings.setValue("background color", color.name(QColor::HexArgb));
+  settings.endGroup();
+}
 
 void Preferences::setOverlayMode(const QString &string)
 {

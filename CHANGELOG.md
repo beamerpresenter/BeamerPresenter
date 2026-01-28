@@ -2,6 +2,7 @@
 ## 0.2.7 (upcoming)
 * new: read speaker notes from pdfpc files
 * new: flatpak builds with MuPDF
+* new: set slide background color (relevant for inserted or transparent slides)
 
 ## 0.2.6
 ### new features

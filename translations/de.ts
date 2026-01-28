@@ -1163,6 +1163,10 @@ Konfiguriere Zwischenspeicher (Cache). Folien werden in gerendert und in einen k
         <source>select pdfpc/JSON file for overlays and notes</source>
         <translation>pdfpc/JSON-Datei für overlays und Notizen auswählen</translation>
     </message>
+    <message>
+        <source>slide background color</source>
+        <translation>Hintergrundfarbe der Folien</translation>
+    </message>
 </context>
 <context>
     <name>ShapeSelectionButton</name>

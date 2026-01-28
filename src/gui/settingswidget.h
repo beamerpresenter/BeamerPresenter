@@ -10,6 +10,7 @@
 #include "src/config.h"
 
 class QTextEdit;
+class QPushButton;
 
 /**
  * @brief Graphical interface to WritableGlobalPreferences::writable()
@@ -29,6 +30,8 @@ class SettingsWidget : public QTabWidget
   QWidget *shortcuts;
   /// Settings affecting rendering and cache
   QWidget *rendering;
+  /// Button for selecting page background color
+  QPushButton *color_button = nullptr;
 
   /// Initialize manual tab.
   void initManual();
@@ -49,6 +52,9 @@ class SettingsWidget : public QTabWidget
   /// required by layout.
   bool hasHeightForWidth() const noexcept override { return true; }
 
+ public slots:
+  void setBackgroundBrushColor();
+
  private slots:
   /// Create a new keyboard shortcut.
   void appendShortcut();
@@ -58,6 +64,10 @@ class SettingsWidget : public QTabWidget
 
   /// Select JSON file created for pdfpc from QFileDialog
   void setPdfpcJSONFile();
+
+ signals:
+  /// Set page background color;
+  void setPageBackgroundColor(const QColor &color);
 };
 
 #endif  // SETTINGSWIDGET_H

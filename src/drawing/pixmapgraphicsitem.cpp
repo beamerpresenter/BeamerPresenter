@@ -53,6 +53,8 @@ void PixmapGraphicsItem::paint(QPainter *painter,
                                QWidget *widget)
 {
   debug_msg(DebugRendering, "start painting pixmap" << this);
+  if (mask_type == NoMask)
+    painter->fillRect(bounding_rect, preferences()->background_brush);
   if (pixmaps.isEmpty()) return;
   const QRectF target_rect = painter->transform().mapRect(bounding_rect);
   const int ref_width = target_rect.width();

@@ -4,6 +4,7 @@
 #include "src/gui/settingswidget.h"
 
 #include <QCheckBox>
+#include <QColorDialog>
 #include <QComboBox>
 #include <QDoubleSpinBox>
 #include <QFile>
@@ -12,6 +13,7 @@
 #include <QLabel>
 #include <QLineEdit>
 #include <QMap>
+#include <QPalette>
 #include <QPushButton>
 #include <QScrollArea>
 #include <QScroller>
@@ -249,8 +251,30 @@ void SettingsWidget::initRendering()
           &Preferences::setPagePartThreshold);
 #endif
   layout->addRow(tr("page part threshold"), page_part_box);
+  color_button = new QPushButton(this);
+  QPalette palette = color_button->palette();
+  palette.setBrush(QPalette::Button, preferences()->background_brush);
+  color_button->setPalette(palette);
+  layout->addRow(tr("slide background color"), color_button);
+  connect(color_button, &QPushButton::clicked, this,
+          &SettingsWidget::setBackgroundBrushColor);
+  connect(this, &SettingsWidget::setPageBackgroundColor,
+          WritableGlobalPreferences::writable(),
+          &Preferences::setPageBackgroundColor);
 
   rendering->setLayout(layout);
+}
+
+void SettingsWidget::setBackgroundBrushColor()
+{
+  QPalette palette = color_button->palette();
+  const QColor color = QColorDialog::getColor(palette.button().color(), this,
+                                              tr("slide background color"),
+                                              QColorDialog::ShowAlphaChannel);
+  if (!color.isValid()) return;
+  emit setPageBackgroundColor(color);
+  palette.setColor(QPalette::Button, color);
+  color_button->setPalette(palette);
 }
 
 void SettingsWidget::initMisc()

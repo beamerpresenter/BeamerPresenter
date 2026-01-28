@@ -1078,6 +1078,7 @@ void SlideScene::startTransition(const int newpage,
     oldPage->setZValue(1e9);
   } else
     emit navigationToViews(page, this);
+  pageTransitionItem->setMaskType(PixmapGraphicsItem::OtherMask);
   pageTransitionItem->setZValue(1e10);
   debug_msg(DebugTransitions,
             "transition:" << transition.type << transition.duration

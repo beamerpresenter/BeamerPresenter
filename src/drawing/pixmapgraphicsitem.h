@@ -48,6 +48,7 @@ class PixmapGraphicsItem : public QGraphicsObject
     HorizontalBlinds,
     VerticalBlinds,
     Glitter,
+    OtherMask,
   };
 
   static constexpr int blinds_number_h = 6;
