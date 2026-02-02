@@ -68,6 +68,8 @@ class Master : public QObject
 
   /// File name of file containing drawings etc.
   QString master_file;
+  /// File name of pdfpc file.
+  QString pdfpc_file;
 
   /// Map of cache hashs to cache objects.
   QMap<int, const PixCache *> caches;

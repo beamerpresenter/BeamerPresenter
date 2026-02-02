@@ -903,6 +903,7 @@ void Master::handleAction(const Action action)
       bool changed = false;
       for (const auto &doc : std::as_const(documents))
         changed |= doc->loadDocument();
+      if (!pdfpc_file.isNull()) loadPdfpcJSON(pdfpc_file);
       if (changed) {
         initializePageIndex();
         WritableGlobalPreferences::writable()->number_of_pages =
@@ -1566,6 +1567,7 @@ void Master::loadPdfpcJSON(const QString &filename)
                << error.errorString();
     return;
   }
+  pdfpc_file = file.fileName();
 
   // 2. Read properties.
   const QJsonValue duration = doc.object().value("duration");
