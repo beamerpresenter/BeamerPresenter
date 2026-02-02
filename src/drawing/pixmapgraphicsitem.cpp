@@ -2,6 +2,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later OR AGPL-3.0-or-later
 
 #include "src/drawing/pixmapgraphicsitem.h"
+#include "src/preferences.h"
 
 #include <QPainter>
 #include <QStyleOptionGraphicsItem>
@@ -72,6 +73,7 @@ void PixmapGraphicsItem::paint(QPainter *painter,
   if (mask_type && !_mask.isNull()) {
     switch (mask_type) {
       case NoMask:
+      case OtherMask:
       case Glitter:
         break;
       case PositiveClipping:
