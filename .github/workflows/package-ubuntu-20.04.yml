@@ -7,8 +7,8 @@ on:
   workflow_dispatch:
 
 env:
-  MUPDF_VERSION: 1.27.0
-  MUPDF_SHA256SUM: 61b109c82093a1c39b1b7f58c04b6d8ad6fe8e83e266ce1d8423e1e5c9310911
+  MUPDF_VERSION: 1.27.2
+  MUPDF_SHA256SUM: 35049dcd0b1a541be2cca1eb4bbd6b41a51e0ed44799333b7bde4528461e2848
 
 jobs:
   package:
