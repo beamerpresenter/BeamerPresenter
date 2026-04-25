@@ -3,9 +3,12 @@ There exist different flavors of BeamerPresenter:
 Choose the major Qt version (6 by default, 5 for legacy support) and the PDF engine (Poppler, MuPDF, Qt PDF), see [below](#choosing-mupdf-or-poppler).
 
 BeamerPresenter can be found in the official [Nix repositories](https://search.nixos.org/packages?channel=unstable&type=packages&query=BeamerPresenter) and in the [AUR](https://aur.archlinux.org/packages/beamerpresenter) (also as a [mainline version](https://aur.archlinux.org/packages/beamerpresenter-git)).
-The [releases](https://github.com/beamerpresenter/BeamerPresenter/releases) include packages for Arch/Manjaro/Endeavour, Ubuntu (24.04, 22.04 and 20.04), and flatpak.
+The [releases](https://github.com/beamerpresenter/BeamerPresenter/releases) include packages for Arch/Manjaro/Endeavour, Ubuntu (all LTS releases since 20.04), and flatpak.
 These packages can be installed as shown in the following example, which uses Poppler as PDF engine (after downloading the corresponding file):
 ```sh
+# Ubuntu 26.04:
+sudo apt install libmupdf27.0
+sudo apt install ./beamerpresenter-poppler-0.2.6-qt6-resolute-x86_64.deb
 # Ubuntu 24.04:
 sudo apt install ./beamerpresenter-poppler-0.2.6-qt6-noble-x86_64.deb
 # Ubuntu 22.04:
@@ -37,7 +40,7 @@ When installing BeamerPresenter you need to choose a PDF engine from MuPDF, Popp
 
 
 ## Requirements
-Building is currently tested in Arch Linux, Ubuntu 24.04, 22.04, 20.04 and 25.04 (only Qt 6), Fedora 41, and MinGW-w64 in MSYS2 (Windows).
+Building is currently tested in Arch Linux, Ubuntu (26.04, 24.04, 22.04, 20.04), Fedora 41, and MinGW-w64 in MSYS2 (Windows).
 
 In order to compile BeamerPresenter you need to have CMake, zlib and Qt 5/6 including the multimedia and SVG modules installed.
 For translations you also need the linguist tools.
@@ -71,6 +74,7 @@ When compiling with MuPDF:
 
 When compiling with Qt PDF:
 * `qtpdf5-dev` (Qt 5) or `qtpdf6-dev` (Qt 6, Ubuntu <24.10) or `qt6-pdf-dev` (Qt 6, Ubuntu ≥24.10)
+* Note: In Ubuntu 26.04, Qt PDF only works with Qt 6. In Ubuntu 22.04, it only works with Qt 5.
 
 ### Dependencies in Arch Linux/Manjaro/Endeavour
 Replace qt6 with qt5 in all package names if you want to use Qt 5.
@@ -187,7 +191,7 @@ These options are mainly provided for Linux distributions in which MuPDF is stat
 | `CMAKE_INSTALL_PREFIX` | /usr | install prefix. If not specified, this will be /usr/local in Linux |
 | `CMAKE_INSTALL_SYSCONFDIR` | /etc | system configuration directory |
 | `GENERATE_MANPAGES` | ON | Generate man pages and include them in installation |
-| `UBUNTU_VERSION` | 24.04 | Adjust package dependencies to given Ubuntu version when building debian package |
+| `UBUNTU_VERSION` | 26.04 | Adjust package dependencies to given Ubuntu version when building debian package |
 
 ### Build and install
 After configuring with CMake, you can build the project (add ` -j 4` for compiling with 4 CPU cores)

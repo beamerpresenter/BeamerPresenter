@@ -26,7 +26,8 @@ search highlight color=#6428643b
 # automatically load pdfpc files: when opening "file.pdf",
 # beamerpresenter will automatically try to load "file.pdfpc"
 autoload pdfpc=false
-
+# always use theme colors, even when this may lead to insufficient contrast
+force theme colors=false
 
 [drawing]
 # number of history steps on the currently shown slide

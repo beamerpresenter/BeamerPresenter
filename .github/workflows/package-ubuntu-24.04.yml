@@ -25,8 +25,15 @@ jobs:
         sudo apt-get install -y --no-install-recommends
         cmake
         g++
-        lunzip
         zlib1g-dev
+        libqt5svg5-dev
+        libqt6svg6-dev
+        qt6-multimedia-dev
+        qtmultimedia5-dev
+        qt6-tools-dev
+        qttools5-dev
+        libpoppler-qt5-dev
+        libpoppler-qt6-dev
         libmupdf-dev
         libmujs-dev
         libgumbo-dev
@@ -36,14 +43,6 @@ jobs:
         libjpeg-dev
         libopenjp2-7-dev
         libjbig2dec0-dev
-        libqt6svg6-dev
-        qt6-multimedia-dev
-        qt6-tools-dev
-        libpoppler-qt6-dev
-        libqt5svg5-dev
-        qtmultimedia5-dev
-        qttools5-dev
-        libpoppler-qt5-dev
         libbrotli-dev
 
 

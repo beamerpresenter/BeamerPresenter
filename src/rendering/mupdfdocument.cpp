@@ -15,10 +15,6 @@
 #include <utility>
 
 #include "src/config.h"
-#ifdef SUPPRESS_MUPDF_WARNINGS
-#include <fcntl.h>
-#include <unistd.h>
-#endif
 #include "src/log.h"
 #include "src/preferences.h"
 #include "src/rendering/mupdfdocument.h"
@@ -235,22 +231,10 @@ bool MuPdfDocument::loadDocument()
   pages.resize(number_of_pages);
   int i = 0;
 
-#ifdef SUPPRESS_MUPDF_WARNINGS
-  fflush(stderr);
-  const int fd = dup(2);
-  const int nullfd = open("/dev/null", O_WRONLY);
-  dup2(nullfd, 2);
-  close(nullfd);
-#endif
   do {
     fz_try(ctx) pages[i] = pdf_load_page(ctx, doc, i);
     fz_catch(ctx) pages[i] = nullptr;
   } while (++i < number_of_pages);
-#ifdef SUPPRESS_MUPDF_WARNINGS
-  fflush(stderr);
-  dup2(fd, 2);
-  close(fd);
-#endif
 
   mutex->unlock();
 

@@ -52,9 +52,12 @@ It is recommended to use Qt 6 (if available) and Poppler or MuPDF.
 More details can be found in the [installation manual](INSTALL.md).
 
 BeamerPresenter can be found in the [Nix repositories](https://search.nixos.org/packages?channel=unstable&type=packages&query=BeamerPresenter) and [in the AUR](https://aur.archlinux.org/packages/beamerpresenter) (for Arch/Manjaro/Endeavour, also as a [mainline version](https://aur.archlinux.org/packages/beamerpresenter-git)).
-The [releases](https://github.com/beamerpresenter/BeamerPresenter/releases) come with packages for Arch/Manjaro/Endeavour, Ubuntu 24.04 / 22.04 / 20.04, and flatpak.
+The [releases](https://github.com/beamerpresenter/BeamerPresenter/releases) come with packages for Arch/Manjaro/Endeavour, Ubuntu, and flatpak.
 For example, the commands for installing BeamerPresenter with Poppler as PDF engine after downloading the corresponding file are:
 ```sh
+# Ubuntu 26.04:
+sudo apt install libmupdf27.0
+sudo apt install ./beamerpresenter-mupdf-0.2.6-qt6-resolute-x86_64.deb
 # Ubuntu 24.04:
 sudo apt install ./beamerpresenter-poppler-0.2.6-qt6-noble-x86_64.deb
 # Ubuntu 22.04:
@@ -70,7 +73,7 @@ flatpak install BeamerPresenter-mupdf-qt6-x86_64.flatpak
 The build process for these packages is explained [here](packaging).
 Verify the signature of the checksums in `SHA256SUMS`:
 ```sh
-gpg --keyserver hkps://keyserver.ubuntu.com --recv-keys DD11316A0D8E585F
+gpg --keyserver hkps://keyserver.ubuntu.com --recv-keys D9087AEC43D57C18
 gpg --verify SHA256SUMS.sig SHA256SUMS
 ```
 
@@ -78,7 +81,7 @@ In Windows, it is possible to build and install BeamerPresenter using [MSYS2](ht
 See [INSTALL.md](INSTALL.md#windows) and [packaging/Windows.md](packaging/Windows.md) for details.
 
 The libraries required to build BeamerPresenter are also available on other platforms (see [installation manual](INSTALL.md)).
-Issues or pull requests concerning building on any platform are welcome!
+Issues or pull requests concerning building on other platforms are welcome!
 
 ## Configuration
 There are two different aspects of the configuration:
@@ -123,7 +126,7 @@ The following known problems have low priority. If one of these problems is rele
 ## License
 This software may be redistributed and/or modified under the terms of the GNU Affero General Public License (AGPL), version 3, available on the [GNU web site](https://www.gnu.org/licenses/agpl-3.0.html). Compiled versions of this program depend on or include components licensed under the GPL and other free software licenses. More details about the license can be found in the LICENSE file.
 
-BeamerPresenter can be compiled without MuPDF, using only Poppler as a PDF engine.
+BeamerPresenter can be compiled without MuPDF, using only Poppler  or Qt PDF as a PDF engine.
 When not using MuPDF in any way, this software may, alternatively to the AGPL, be redistributed and/or modified under the terms of the GNU General Public License (GPL), version 3 or any later version, available on the [GNU web site](https://www.gnu.org/licenses/gpl-3.0.html).
 
 BeamerPresenter is distributed in the hope that it will be useful,
