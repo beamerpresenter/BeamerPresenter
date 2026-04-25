@@ -57,6 +57,8 @@ class Preferences : public QObject
     FinalizeDrawnPaths = 1 << 4,
     /// Automatically load pdfpc JSON file.
     AutoloadPdfpc = 1 << 5,
+    // Always use theme colors, also for timer
+    ForceThemeColors = 1 << 6,
   };
   Q_DECLARE_FLAGS(GlobalFlags, GlobalFlag);
   Q_FLAG(GlobalFlags);

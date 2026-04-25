@@ -309,18 +309,16 @@ void Preferences::loadSettings()
 #endif
   if (settings.value("log", false).toBool())
     global_flags |= LogSlideChanges;
-  else
-    global_flags &= ~LogSlideChanges;
   if (settings.value("automatic slide changes", true).toBool())
     global_flags |= AutoSlideChanges;
   else
     global_flags &= ~AutoSlideChanges;
   if (settings.value("external links", false).toBool())
     global_flags |= OpenExternalLinks;
-  else
-    global_flags &= ~OpenExternalLinks;
   if (settings.value("autoload pdfpc", false).toBool())
     global_flags |= AutoloadPdfpc;
+  if (settings.value("force theme colors", false).toBool())
+    global_flags |= ForceThemeColors;
 
   qreal num;
   {

@@ -52,10 +52,13 @@ TimerWidget::~TimerWidget()
 void TimerWidget::updateTimeout() noexcept
 {
   QPalette palette;
+  const bool set_color =
+      (preferences()->global_flags & Preferences::ForceThemeColors) == 0;
   if (_flags & Timeout)
     palette.setColor(QPalette::Base, Qt::red);
-  else
+  else if (set_color)
     palette.setColor(QPalette::Base, Qt::white);
+  if (set_color) palette.setColor(QPalette::Text, Qt::black);
   setPalette(palette);
   emit sendTimeout(_flags & Timeout);
 }
@@ -159,7 +162,10 @@ void TimerWidget::setTotalTime(const QTime time) noexcept
 void TimerWidget::startTimer() noexcept
 {
   QPalette timer_palette(passed->palette());
-  timer_palette.setColor(QPalette::Text, Qt::black);
+  timer_palette.setColor(QPalette::Text, (preferences()->global_flags &
+                                          Preferences::ForceThemeColors)
+                                             ? palette().color(QPalette::Text)
+                                             : Qt::black);
   passed->setPalette(timer_palette);
   if (preferences()->msecs_passed != UINT_LEAST32_MAX) {
     WritableGlobalPreferences::writable()->target_time =
