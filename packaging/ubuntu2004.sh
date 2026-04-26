@@ -9,10 +9,10 @@ set -e
 : ${BUILD_DIR:=build}  # path to build directory
 
 # Install general dependencies
-sudo apt install cmake g++-10 zlib1g-dev qtmultimedia5-dev libqt5svg5-dev qttools5-dev
+sudo apt install -y make cmake g++-10 zlib1g-dev qtmultimedia5-dev libqt5svg5-dev qttools5-dev
 
 if [[ "$BACKEND" == mupdf ]]; then
-    sudo apt install libmupdf-dev libfreetype-dev libharfbuzz-dev freeglut3-dev libjpeg-dev libopenjp2-7-dev libjbig2dec0-dev libgumbo-dev libbrotli-dev
+    sudo apt install -y libmupdf-dev libfreetype-dev libharfbuzz-dev freeglut3-dev libjpeg-dev libopenjp2-7-dev libjbig2dec0-dev libgumbo-dev libbrotli-dev
     cmake \
         -B "$BUILD_DIR" \
         -DCMAKE_BUILD_TYPE='Release' \
@@ -32,7 +32,7 @@ if [[ "$BACKEND" == mupdf ]]; then
         -DCMAKE_INSTALL_PREFIX='/usr' \
         -DCMAKE_INSTALL_SYSCONFDIR='/etc'
 elif [[ "$BACKEND" == poppler ]]; then
-    sudo apt install libpoppler-qt5-dev
+    sudo apt install -y libpoppler-qt5-dev
     cmake \
         -B "$BUILD_DIR" \
         -DCMAKE_BUILD_TYPE='Release' \

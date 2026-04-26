@@ -12,10 +12,10 @@ set -e
 if [[ "$QT_VERSION_MAJOR" == 5 ]]; then
     QT_VERSION_MINOR=15
     # Install general dependencies
-    sudo apt install cmake g++ zlib1g-dev qtmultimedia5-dev libqt5svg5-dev qttools5-dev
+    sudo apt install -y make cmake g++ zlib1g-dev qtmultimedia5-dev libqt5svg5-dev qttools5-dev
 elif [[ "$QT_VERSION_MAJOR" == 6 ]]; then
     # Install general dependencies
-    sudo apt install cmake g++ zlib1g-dev qt6-multimedia-dev libqt6svg6-dev qt6-tools-dev libgl1-mesa-dev
+    sudo apt install -y make cmake g++ zlib1g-dev qt6-multimedia-dev libqt6svg6-dev qt6-tools-dev libgl1-mesa-dev
     QT_VERSION_MINOR=4
 else
     echo "Invalid Qt version: $QT_VERSION_MAJOR"
@@ -23,8 +23,8 @@ else
 fi
 
 if [[ "$BACKEND" == mupdf ]]; then
+    sudo apt install -y libmupdf-dev libfreetype-dev libharfbuzz-dev libjpeg-dev libopenjp2-7-dev libjbig2dec0-dev libgumbo-dev libmujs-dev freeglut3-dev libbrotli-dev
     cmake \
-        sudo apt install libmupdf-dev libfreetype-dev libharfbuzz-dev libjpeg-dev libopenjp2-7-dev libjbig2dec0-dev libgumbo-dev libmujs-dev freeglut3-dev libbrotli-dev
         -B "$BUILD_DIR" \
         -DCMAKE_BUILD_TYPE='Release' \
         -DUBUNTU_VERSION="24.04" \
@@ -44,7 +44,7 @@ if [[ "$BACKEND" == mupdf ]]; then
         -DCMAKE_INSTALL_PREFIX='/usr' \
         -DCMAKE_INSTALL_SYSCONFDIR='/etc'
 elif [[ "$BACKEND" == poppler ]]; then
-    sudo apt install "libpoppler-qt${QT_VERSION_MAJOR}-dev"
+    sudo apt install -y "libpoppler-qt${QT_VERSION_MAJOR}-dev"
     cmake \
         -B "$BUILD_DIR" \
         -DCMAKE_BUILD_TYPE='Release' \
@@ -62,7 +62,11 @@ elif [[ "$BACKEND" == poppler ]]; then
         -DCMAKE_INSTALL_PREFIX='/usr' \
         -DCMAKE_INSTALL_SYSCONFDIR='/etc'
 elif [[ "$BACKEND" == qtpdf ]]; then
-    sudo apt install "qtpdf${QT_VERSION_MAJOR}-dev"
+    if [[ "$QT_VERSION_MAJOR" == 6 ]]; then
+        sudo apt install qt6-pdf-dev
+    elif [[ "$QT_VERSION_MAJOR" == 5 ]]; then
+        sudo apt install qtpdf5-dev
+    fi
     cmake \
         -B "$BUILD_DIR" \
         -DCMAKE_BUILD_TYPE='Release' \
